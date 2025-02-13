@@ -28,7 +28,7 @@ public class UserTester {
     }
 
     public void test(int rankOfActivity, int expectedRank, int expectedProgress) {
-        user.incProgress(rankOfActivity);
+        user.progress(rankOfActivity);
         assertEquals(expectedRank, user.getRank(), "After applying a rank of " + rankOfActivity);
         assertEquals(expectedProgress, user.getProgress(), "After applying a rank of " + rankOfActivity);
 
@@ -76,7 +76,7 @@ public class UserTester {
     public void testActivityRankOutOfBoundsLessThanNegativeEight() {
         setUp();
         IllegalArgumentException thrown = assertThrows(
-                IllegalArgumentException.class, () -> user.incProgress(-9), "Expected incProgress to throw, but it didn't"
+                IllegalArgumentException.class, () -> user.progress(-9), "Expected incProgress to throw, but it didn't"
         );
         assertTrue(thrown.getMessage().contentEquals("The rank of an activity cannot be less than 8, 0, or greater than 8!"));
         tearDown();
@@ -86,7 +86,7 @@ public class UserTester {
     public void testActivityRankOutOfBoundsEqualToZero() {
         setUp();
         IllegalArgumentException thrown = assertThrows(
-                IllegalArgumentException.class, () -> user.incProgress(0), "Expected incProgress to throw, but it didn't"
+                IllegalArgumentException.class, () -> user.progress(0), "Expected incProgress to throw, but it didn't"
         );
         assertTrue(thrown.getMessage().contentEquals("The rank of an activity cannot be less than 8, 0, or greater than 8!"));
         tearDown();
@@ -96,7 +96,7 @@ public class UserTester {
     public void testActivityRankOutOfBoundsGreaterThanEight() {
         setUp();
         IllegalArgumentException thrown = assertThrows(
-                IllegalArgumentException.class, () -> user.incProgress(9), "Expected incProgress to throw, but it didn't"
+                IllegalArgumentException.class, () -> user.progress(9), "Expected incProgress to throw, but it didn't"
         );
         assertTrue(thrown.getMessage().contentEquals("The rank of an activity cannot be less than 8, 0, or greater than 8!"));
         tearDown();
